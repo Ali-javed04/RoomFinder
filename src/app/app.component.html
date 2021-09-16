@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card bg-dark my-5">
+        <div class="card-body">
+          <ul class="text-center list-inline py-3">
+            <li class="list-inline-item">
+              <a routerLink="/rooms" class="btn btn-info">List Rooms</a>
+            </li>
+            <li class="list-inline-item">
+              <a routerLink="/addroom" class="btn btn-info">Add Room</a>
+            </li>
+            <li class="list-inline-item">
+              <a routerLink="/addreservation" class="btn btn-info">Add Reservation</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-actions">
+          <app-auth-button></app-auth-button>
+          <app-auth-user-profile></app-auth-user-profile>
+        </div>
+      </div>
+
+      <router-outlet></router-outlet>
+      <div class="row text-center">
+
+        <div class="col-md-4">
+          <div class="btn-group">
+            <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
+              Previous
+            </div>
+            <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
+              Current
+            </div>
+            <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate">
+              Next
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <mwl-calendar-month-view
+
+    [viewDate]="viewDate"
+    [viewDate]="viewDate"
+    [events]="events"
+    (beforeViewRender)="beforeMonthViewRender($event)"
+    (dayClicked)="dayClicked()"
+  >
+  </mwl-calendar-month-view>
+
+
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="container">
+
+  <form class="user-login-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <!-- The Modal Login -->
+
+        <div class="form-row">
+          <div class="form-group col">
+            <label>User</label>
+            <select formControlName="userID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userID.errors }">
+                <option value="">Select User</option>
+                <option *ngFor="let user of users" value="{{user.id}}">{{user.name}}</option>
+
+
+            </select>
+            <div *ngIf="submitted && f.userID.errors" class="invalid-feedback">
+                <div *ngIf="f.userID.errors.required">User is required</div>
+            </div>
+        </div>
+        </div>
+
+
+        <div class="form-row">
+          <div class="form-group col">
+            <label>Room</label>
+            <select formControlName="roomID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.roomID.errors }">
+                <option value="">Select room</option>
+                <option *ngFor="let room of rooms" value="{{room.id}}">{{room.name }}</option>
+
+
+            </select>
+            <div *ngIf="submitted && f.roomID.errors" class="invalid-feedback">
+                <div *ngIf="f.roomID.errors.required">Room is required</div>
+            </div>
+        </div>
+        </div>
+<div class="form-row">
+  <div class="form-group col">
+    <label>Date</label>
+    <input type="date" formControlName="date" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.date.errors }" />
+    <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+        <div *ngIf="f.date.errors.required">Date is required</div>
+    </div>
+</div>
+</div>
+
+
+
+
+          <div class="btn-check-log text-center">
+              <button type="submit" class=" btn btn-success">Reserved</button>
+          </div>
+        </form>
+
+</div>
